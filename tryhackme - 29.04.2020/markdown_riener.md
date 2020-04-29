@@ -65,7 +65,7 @@ ip a
  
  ## Network Scanning
  ```
-nmap ip | tte nmap-standard
+nmap ip | tee nmap-standard
   => 1000 meist verwendeten ports scannen und mit tee weitergeleitet
 ```
 ## Genaueres Scanning
@@ -74,3 +74,5 @@ nmap --script vuln -p 135,139,445 10.10.211.133 | tee nmap-vuln
  => Genauerer Schwachstellenscan für die Ports 135,139,445
     Die Ports 135,139,445 weisen darauf, dass es sich um Ports handelt, die unter Windows verwendet werdenn.
 ```
+
+
