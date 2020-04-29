@@ -65,7 +65,7 @@ ip a
  
  ## Network Scanning
  ```
-nmap ip | tee nmap-standard
+nmap 10.10.211.133 | tee nmap-standard
   => 1000 meist verwendeten ports scannen und mit tee weitergeleitet
 ```
 ## Genaueres Scanning
