@@ -14,6 +14,8 @@
 ### Anleitung 
 - [Anleitung](https://liberty-shell.com/sec/2018/07/08/install-ms3/)
 
+
+Richtige Anleitung
 ````
 mkdir metasploitable3-workspace
 cd metasploitable3-workspace
@@ -22,5 +24,17 @@ vagrant up
 ````
 Alles in der Powershell eingeben
 
-Weiter sind wir am Vormittag gekommen
-----
+## Weiter sind wir nicht am Vormittag gekommen
+---
+# Nachmittag
+
+1. msfconsole
+2. neuer tab
+3. ip a
+4. ls -l 
+5. nmap -sV -sC --script vuln -oN dsofsdf.nmap 
+6. db_status
+7. workspace -a msp3win
+8. db_nmap 192.168.0.130 
+9. db_nmap 192.168.0.130  -p 8484, 8585
+10. 
