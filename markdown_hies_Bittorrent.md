@@ -13,14 +13,10 @@
 - [Git Repo Metasploitable3](https://github.com/rapid7/metasploitable3.git)
 ### Anleitung 
 - [Anleitung](https://liberty-shell.com/sec/2018/07/08/install-ms3/)
-
+  
 ````
 mkdir metasploitable3-workspace
 cd metasploitable3-workspace
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rapid7/metasploitable3/master/Vagrantfile" -OutFile "Vagrantfile"
 vagrant up
 ````
-Alles in der Powershell eingeben
-
-Weiter sind wir am Vormittag gekommen
-----
