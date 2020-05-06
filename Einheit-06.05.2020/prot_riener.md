@@ -1,3 +1,11 @@
+## Orf Beitrag zur Schule
+
+## Split Command
+Mit split kann ein zu großes Video in einzelne Parts zerlegt werden.
+
+---
+
+
 Vagrant aus dem Internet installieren
 metasplotable3 von github pullen
 
