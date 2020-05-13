@@ -75,4 +75,11 @@ nmap --script vuln -p 135,139,445 10.10.211.133 | tee nmap-vuln
     Die Ports 135,139,445 weisen darauf, dass es sich um Ports handelt, die unter Windows verwendet werdenn.
 ```
 
+# Nachmittag
 
+## Englisch
+
+## Vuln Scan
+```
+nmap -sV -sC --script vuln -oN blue.nmap 10.10.122.88
+```
