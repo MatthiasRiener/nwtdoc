@@ -150,7 +150,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 ### next try
 
 #### lhosts vpn ip adresse 
-[]()
+[https://www.youtube.com/watch?v=490l9BoUGD4](https://www.youtube.com/watch?v=490l9BoUGD4)
 > search icecast <br>
 > searchsploit icecast
 > zwischenablage 2.0.1 (Windows x86) - Header Overwrite (Metasploit) <br>
