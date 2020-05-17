@@ -149,7 +149,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 10.10.207.74
 ### next try
 
-#### lhosts vpn ip adresse 
+#### lhosts vpn ip adresse 10.9.9.13
 [https://www.youtube.com/watch?v=490l9BoUGD4](https://www.youtube.com/watch?v=490l9BoUGD4)
 > search icecast <br>
 > searchsploit icecast
