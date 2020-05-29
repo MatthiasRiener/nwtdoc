@@ -7,21 +7,37 @@ W2KB RHOST: (Verteidiger) 192.168.0.24
 # Anleitung: https://www.youtube.com/watch?v=4HOGfSQEYuE
 
 > msfconsole
+
 > msfdb init
+
 > nvim msf.md  		(File für Output von Schwachstellen)
+
 > workspace -a msp3win
+
 > workspace
 
+
+
 > db_nmap 192.168.0.24 -p 8585, 8484	 (Defender)
+
 > use auxiliary/scanner/http/http_version
+
 > options
+
 > setg RHOST (rhost)
+
 > setg RHOSTS (rhost)
+
 > set RPORT 9200
+
 > run
+
 > set RPORT 8484 (wegen [chaty]/tomcat (für javae))
+
 > run
+
 > set RPORT 8585
+
 > run
 
 
