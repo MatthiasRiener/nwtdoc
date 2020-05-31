@@ -16,7 +16,7 @@ Programm starten
 
 > about:preferences#searchResults<br>
 > proxy Einstellung richtig konfigurieren<br>
-![Image](http://www.eschoolnews.com/files/2014/01/online_testing.3.jpg)
+![Image](https://github.com/MatthiasRiener/nwtdoc/blob/master/Hieselmayr/Unbenannt.JPG)<br>
 > metasploitable 2 starten (schauen ob die netzwerkbrück aktiv ist)<br>
 > ip a
 ```
